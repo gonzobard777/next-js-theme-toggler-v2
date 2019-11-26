@@ -1,0 +1,65 @@
+@import "~normalize.css/normalize.css";
+@import "~@blueprintjs/core/lib/css/blueprint.css";
+@import "~@blueprintjs/core/lib/less/variables";
+@import "../styles/lib/config";
+/*@formatter:off*/
+
+.app {
+  background-color: @light-gray5;
+  &.@{ns}-dark {
+    background-color: @dark-gray5;
+  }
+}
+
+//region GRID
+  .app {
+    display: grid;
+    grid-row-gap: @row-gap;
+    grid: 'page-header' @page-header-height
+          'page-main  ' @page-main-height
+          'page-footer' @page-header-height;
+    grid-template-columns: minmax(@mobile, 1fr);
+  }
+  .header { grid-area: page-header; }
+  .main   { grid-area: page-main;   }
+  .footer { grid-area: page-footer; }
+
+  .header,
+  .main,
+  .footer {
+    display: grid;
+    grid: 'adaptive-container'
+         / 1fr                ;
+  }
+  .app__adaptive-container {
+    grid-area: adaptive-container;
+    display: grid;
+  }
+
+@media @mobile-media {
+  .header,
+  .main,
+  .footer {
+    grid: 'adaptive-container'
+         / @mobile            ;
+  }
+}
+@media @tablet-media {
+  .header,
+  .main,
+  .footer {
+    grid: '....  adaptive-container  ....'
+         / 1fr   @tablet             1fr  ;
+  }
+}
+@media @desktop-media {
+  .header,
+  .main,
+  .footer {
+    grid: '....  adaptive-container  ....'
+         / 1fr   @desktop            1fr  ;
+  }
+}
+//endregion
+
+/*@formatter:off*/

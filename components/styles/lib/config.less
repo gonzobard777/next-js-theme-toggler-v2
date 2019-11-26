@@ -1,0 +1,26 @@
+/*@formatter:off*/
+
+@indent-xs: 5px                     ; // extra small
+@indent-s : @indent-xs + @indent-xs ; // small
+@indent-m : @indent-s  + @indent-xs ; // medium
+@indent-l : @indent-m  + @indent-xs ; // large
+@indent-xl: @indent-l  + @indent-xs ; // extra large
+
+@row-gap           : @indent-s;
+@page-header-height: 40px;
+@page-main-height  : minmax(calc(100vh - 2 * @page-header-height - 2 * @row-gap), 1fr);
+
+
+//region ADAPTIVE
+@mobile : 320px ;
+@tablet : 768px ;
+@desktop: 1150px;
+@mobile-media : ~'(min-width: @{mobile} )';
+@tablet-media : ~'(min-width: @{tablet} )';
+@desktop-media: ~'(min-width: @{desktop})';
+
+@content-indent-mobile: @indent-m;
+@content-indent-tablet: 2 * @content-indent-mobile;
+//endregion
+
+/*@formatter:on*/

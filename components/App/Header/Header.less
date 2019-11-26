@@ -1,0 +1,65 @@
+@import "~@blueprintjs/core/lib/less/variables";
+@import "../../styles/lib/config";
+/*@formatter:off*/
+
+@size1: 150px;
+
+.header {
+  box-shadow: @pt-elevation-shadow-1;
+  background-color: @white;
+  .@{ns}-dark & {
+    box-shadow: @pt-dark-elevation-shadow-1;
+    background-color: @dark-gray3;
+  }
+}
+
+.header__logo {
+  padding-left: @indent-xs;
+}
+.header__user {
+  padding-right: @indent-xs;
+}
+
+//region GRID
+  .header {
+    align-content: center;
+    justify-content: center;
+  }
+  .header .app__adaptive-container {
+    grid: 'header__logo  header__user'
+         / 1fr           1fr          ;
+    align-items: center;
+    justify-content: center;
+  }
+  .header__logo {
+    grid-area: header__logo;
+  }
+  .header__middle {
+    grid-area: header__middle;
+    display: none;
+  }
+  .header__user {
+    grid-area: header__user;
+    justify-self: end;
+  }
+
+@media @mobile-media {
+  .header .app__adaptive-container {
+    grid: 'header__logo  header__user'
+         / 1fr           1fr          ;
+  }
+}
+@media @tablet-media {
+  .header .app__adaptive-container {
+    grid: 'header__logo  header__middle  header__user'
+         / @size1        1fr             @size1       ;
+  }
+  .header__middle {
+    display: block;
+  }
+}
+@media @desktop-media {
+}
+//endregion
+
+/*@formatter:on*/

@@ -1,0 +1,71 @@
+@import "~@blueprintjs/core/lib/less/variables";
+@import "../../styles/lib/config";
+/*@formatter:off*/
+
+@size1: 150px;
+
+.footer {
+  box-shadow: @pt-elevation-shadow-1;
+  background-color: @white;
+  .@{ns}-dark & {
+    box-shadow: @pt-dark-elevation-shadow-1;
+    background-color: @dark-gray3;
+  }
+}
+
+.footer__left {
+  padding-left: @indent-xs;
+  .copyright{
+    margin: 0;
+    padding: 0;
+  }
+}
+.footer__right {
+  padding-right: @indent-xs;
+}
+
+//region GRID
+  .footer {
+    align-content: center;
+    justify-content: center;
+  }
+  .footer .app__adaptive-container {
+    grid: 'footer__left  footer__right'
+         / 1fr           1fr           ;
+    align-items: center;
+    justify-content: center;
+  }
+  .footer__left {
+    grid-area: footer__left;
+  }
+  .footer__middle {
+    grid-area: footer__middle;
+    display: none;
+  }
+  .footer__right {
+    grid-area: footer__right;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+@media @mobile-media {
+  .footer .app__adaptive-container {
+    grid: 'footer__left  footer__right'
+         / 1fr           1fr           ;
+  }
+}
+@media @tablet-media {
+  .footer .app__adaptive-container {
+    grid: 'footer__left  footer__middle  footer__right'
+         / 1.5 * @size1  1fr             @size1        ;
+  }
+  .footer__middle {
+    display: block;
+  }
+}
+@media @desktop-media {
+}
+//endregion
+
+/*@formatter:on*/
