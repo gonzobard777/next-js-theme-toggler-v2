@@ -7,11 +7,7 @@ import {Footer} from "./Footer/Footer";
 import {Main} from "./Main/Main";
 
 export const App: React.FC = () => {
-  const [theme, setTheme] = useState();
-
-  useEffect(() => { // runs on client side only
-    if (theme === undefined) setTheme(getStorageTheme());
-  });
+  const [theme, setTheme] = useState(getStorageTheme());
 
   return (
     <div className={classNames('app', theme)}>

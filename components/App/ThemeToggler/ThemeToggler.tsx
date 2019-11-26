@@ -5,9 +5,7 @@ import './ThemeToggler.less';
 export const ThemeToggler: React.FC<IToggleThemeProps> = (props: IToggleThemeProps) => {
   const {theme, toggleFn} = props;
 
-  useEffect(() => { // runs on client side only
-    if (theme !== undefined) updateStorageTheme(theme)
-  });
+  useEffect(() => updateStorageTheme(theme));
 
   return (
     <div className="theme-toggler">
@@ -33,12 +31,12 @@ const getNextTheme = (theme: string) => isDarkTheme(theme) ? LIGHT_THEME : DARK_
 
 const THEME_LOCAL_STORAGE_KEY = 'theme';
 export const getStorageTheme = (): string => {
-  // try {
-  //   if (localStorage){
-  return localStorage.getItem(THEME_LOCAL_STORAGE_KEY) || LIGHT_THEME;
-  // }
-  // }catch (e) {
-  // }
-  // return LIGHT_THEME;
+  try {
+    if (localStorage) {
+      return localStorage.getItem(THEME_LOCAL_STORAGE_KEY) || LIGHT_THEME;
+    }
+  } catch (e) {
+  }
+  return LIGHT_THEME;
 };
 const updateStorageTheme = (theme: string) => localStorage.setItem(THEME_LOCAL_STORAGE_KEY, theme);
